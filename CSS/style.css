@@ -1,0 +1,65 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font: 13px Helvetica, Arial; overflow-wrap: break-word;}
+#m { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+#msg { border: 0; padding: 10px; width: 75%; margin-right: .5%;
+    margin-left:14.9%; }
+#sendBtn { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+#messages { list-style-type: none; margin: 0; padding: 0;
+    margin-left:15%; position: fixed;}
+#messages li { padding: 5px 10px; }
+#messages li:nth-child(odd) { background: #eee; }
+
+
+#friends {
+    width:15%;
+    min-height:100vh;
+    max-height: 100vh;
+    background-color: #141A21 ;
+    overflow:auto;
+    overflow-x: hidden;
+    font-size: 2vw;
+    color: white;
+}
+#main{
+    display: none;
+}
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    display: block; /* Hidden by default */
+    z-index: 1; /* Sit on top */
+    padding-top: 2vh; /* Location of the box */
+    width: 50vh; /* Full width */
+    height: 56vh; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+}
+
+#username{
+    color: black;
+    background-color: white;
+    border-radius: 30px;
+    min-height: 3vw;
+    padding-left: 30px;
+}
+#logInBtn{
+    font-size: 1vw;
+    height: 6vh;
+    width: 8vw;
+    background-color: #242A31;
+    color: white;
+    border: 2px solid white;
+    border-radius: 30px;
+}
+/* Modal Content */
+.modal-content {
+    text-align:center;
+    color:#4789ff;
+    background-color: #242A31 ;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 46vh; /* Full width */
+    height: 53vh; /* Full height */
+
+}

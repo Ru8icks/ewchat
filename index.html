@@ -1,0 +1,43 @@
+<!doctype html>
+<html ng-app="myApp">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>chat with socket.io</title>
+        <link rel="stylesheet" href="CSS/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+
+        <script src="/socket.io/socket.io.js"></script>
+        <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
+        <script src="app.js"></script>
+    </head>
+    <body ng-controller="mainController">
+    <div id="main">
+    <ul id="messages"></ul>
+    <div id="friends" class="container">
+        <p>Active users: </p>
+    </div>
+    <div id="m">
+
+        <input id="msg" ng-model="message" autocomplete="off" />
+        <button id="sendBtn" ng-click="send()">Send</button>
+    </div>
+    </div>
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+            <p>Username:</p>
+            <input type="text" id="username" maxlength="10">
+            <div id="logIn">
+                <button type="button" id="logInBtn" ng-click="logIn()" >Log in</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    </body>
+
+</html>
