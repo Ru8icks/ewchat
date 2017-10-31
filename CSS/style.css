@@ -25,8 +25,8 @@ body { font: 13px Helvetica, Arial; overflow-wrap: break-word;}
 }
 .modal {
     position: fixed;
-    top: 50%;
-    left: 50%;
+    top: 20vh;
+    left: 36vw;
     display: block; /* Hidden by default */
     z-index: 1; /* Sit on top */
     padding-top: 2vh; /* Location of the box */
