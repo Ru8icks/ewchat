@@ -18,10 +18,21 @@ app.get('/chat', function(req,res){
 
 io.on('connection', function(socket){
     console.log("a user connected");
+    socket.on('wisper',function(socID, msg){
+        socket.to(socID).emit('chat message',msg);
+        console.log("whisper"+socID+msg)
+        socket.to(socket.id).emit('chat message',msg);
 
+
+    });
+
+    socket.on('newChat',function(){
+
+    });
 
     socket.on('chat message', function(msg){
         io.emit('chat message', msg);
+
     });
 
     socket.on('disconnect', function(){

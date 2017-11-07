@@ -18,15 +18,22 @@
     <div id="friends" class="container">
         <p>Active users: </p>
         <div ng-repeat="user in activeUsers">
-            
-            <button ng-click="chatWith(user._id)">{{user.name}}</button></>
+
+            <button ng-click="chatWith(user.socketID)">{{user.name}}</button></>
         </div>
     </div>
     <div id="m">
 
         <input id="msg" ng-model="message" autocomplete="off" />
         <button id="sendBtn" ng-click="send()">Send</button>
+
+        <select id="select">
+            <option ng-repeat="user in activeUsers" value={{user.socketID}} >{{user.name}}</option>
+        </select>
+            <button id="wisperBtn" ng-click="wisper()">wisper</button>
+
     </div>
+
     </div>
     <div id="myModal" class="modal">
 

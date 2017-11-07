@@ -5,6 +5,7 @@ app.controller('mainController',['$scope', '$http',function($scope, $http){
     var modal = document.getElementById('myModal');
     var main = document.getElementById("main");
     var username = document.getElementById("username");
+    var wisperValue = document.getElementById("select");
 
     var socket = io.connect();
 
@@ -23,6 +24,19 @@ app.controller('mainController',['$scope', '$http',function($scope, $http){
 
 
         });
+    };
+    $scope.wisper = function(){
+      socket.emit('wisper', wisperValue.options[wisperValue.selectedIndex].value , username.value+" wispers: "+$scope.message);
+      var li=document.createElement("li");
+      li.appendChild(document.createTextNode(username.value+" wispers: "+$scope.message));
+      messages.appendChild(li);
+      $scope.message="";
+    };
+    $scope.chatWith = function(socID){
+        console.log(socID);
+
+        socket.emit('newChat');
+
     };
 
     $scope.send = function(){
