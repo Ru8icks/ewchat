@@ -2,9 +2,44 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
 </head>
-<body>
-$END$
+<body ng-controller="mainController">
+<div id="main">
+    <ul id="messages"></ul>
+    <div id="friends" class="container">
+        <p>Active users: </p>
+        <div ng-repeat="user in activeUsers">
+
+            <button ng-click="chatWith(user.socketID)">  {{user.name}}</button>
+        </div>
+    </div>
+    <div id="m">
+
+        <input id="msg" ng-model="message" autocomplete="off" />
+        <button id="sendBtn" ng-click="send()">Send</button>
+
+        <select id="select">
+            <option ng-repeat="user in activeUsers" value={{user.socketID}} >{{user.name}}</option>
+        </select>
+        <button id="wisperBtn" ng-click="wisper()">wisper</button>
+
+    </div>
+
+</div>
+<div id="myModal" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content" id="modalContent">
+        <p>Username:</p>
+        <input type="text" id="username" maxlength="10" ng-model="userNick" >
+        <div id="logIn">
+            <button type="button" id="logInBtn" ng-click="logIn()" >Log in</button>
+        </div>
+
+    </div>
+
+</div>
+
 </body>
 </html>

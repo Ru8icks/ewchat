@@ -15,20 +15,35 @@ app.get('/chat', function(req,res){
     });
 
 });
+app.get('/nick' ,function(req,res){
+    console.log(req.query.userId +"hai hai hai");
+    db.chat.findOne({socketID : req.query.userId }, function(err,result){
+        res.json(result);
+    })
+
+
+});
 
 io.on('connection', function(socket){
     console.log("a user connected");
     socket.on('wisper',function(socID, msg){
         socket.to(socID).emit('chat message',msg);
-        console.log("whisper"+socID+msg)
+        console.log("whisper"+socID+msg);
         socket.to(socket.id).emit('chat message',msg);
 
 
     });
 
-    socket.on('newChat',function(){
+    socket.on('newChat',function(ID, ID2){
+        console.log(ID+"   "+ID2);
+        socket.join(ID+ID2);
+        socket.to(ID).emit('newChat',ID,ID2);
 
     });
+    socket.on('joinRoom', function(ID){
+        console.log(ID);
+        socket.join(ID);
+    })
 
     socket.on('chat message', function(msg){
         io.emit('chat message', msg);
@@ -67,9 +82,7 @@ io.on('connection', function(socket){
                         console.log("user addded to db " + user);
                     }
                 });
-                console.log("does it break after emit?")
                 socket.emit('logIn', user);
-                console.log("i dont know kid")
                 socket.broadcast.emit('refresh');
 
                 }
